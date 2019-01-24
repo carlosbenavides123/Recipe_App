@@ -3,7 +3,7 @@
 install
 
 Build the project.
-(sudo) docker build .
+- (sudo) docker build .
 
 Run the unit tests (will download all dependencies from requirements if havn't done so yet)
-(sudo) docker-compose run --rm app sh -c "python manage.py test && flake8"
+- (sudo) docker-compose run --rm app sh -c "python manage.py test && flake8"
