@@ -3,11 +3,12 @@ from django.test import TestCase
 from django.urls import reverse
 
 from rest_framework import status
-from rest_framework import APIClient
+from rest_framework.test import APIClient
 
-from core_models import Recipe
+from core.models import Recipe
 
-from recipe.serializers import RecipeSerializer
+from recipes.serializers import RecipeSerializer
+
 
 RECIPE_URL = reverse('recipes:recipe-list')
 
@@ -59,7 +60,7 @@ class PrivateRecipeApiTests(TestCase):
         serializer = RecipeSerializer(recipes, many=True)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
-    
+
     def test_recipes_limited_to_user(self):
         """ Test retrieving recipes for user """
         other_user = get_user_model().objects.create_user(
